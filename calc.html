@@ -1,0 +1,132 @@
+<body>
+  <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet'>
+<input type="text" id="signn" disabled>
+<div id="calculator" align="center">
+  <form>
+
+<input type="text" id="screen" disabled>
+<br>
+<input type="button" value="MC" id="key" onclick="memoryClear()">
+<input type="button" value="MR" id="key" onclick="memoryRecall()">
+<input type="button" value="M+" id="key" onclick="memoryAdd()">
+<input type="button" value="%" id="key" onclick="percent()">
+
+<br>
+<input type="button" value="CE" id="key" onclick="previous()">
+<input type="button" value="C" id="key" onclick="clearAll()">
+<input type="button" value="x^2" id="key" onclick="power()">
+<input type="button" value="√" id="key" onclick="sqrt()">
+
+<br>
+<input type="button" value="7" id="key" onclick='toScreen("7")'>
+<input type="button" value="8" id="key" onclick='toScreen("8")'>
+<input type="button" value="9" id="key" onclick='toScreen("9")'>
+<input type="button" value="/" id="key" onclick="toScreen('/')">
+
+<br>
+<input type="button" value="4" id="key" onclick='toScreen("4")'>
+<input type="button" value="5" id="key" onclick='toScreen("5")'>
+<input type="button" value="6" id="key" onclick='toScreen("6")'>
+<input type="button" value="*" id="key" onclick="toScreen('*')">
+
+<br>
+<input type="button" value="3" id="key" onclick='toScreen("3")'>
+<input type="button" value="2" id="key" onclick='toScreen("2")'>
+<input type="button" value="1" id="key" onclick='toScreen("1")'>
+<input type="button" value="-" id="key" onclick="toScreen('-')">
+
+<br>
+<input type="button" value="0" id="key" style="margin-left: -1px" onclick='toScreen("0")'>
+<input type="button" value="." id="key" onclick="toScreen('.')">
+<input type="button" value="+" id="key" onclick="toScreen('+')">
+<input type="button" value="=" id="key" onclick="equal()">
+</form>
+</div>
+
+
+
+<style>
+html{
+  background: url('https://s-media-cache-ak0.pinimg.com/originals/8c/46/2f/8c462fc15d8205ea7ecf252189d71393.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+     -o-background-size: cover;
+     background-size: cover;
+}
+#screen {
+
+    width: 350px;
+    height: 50px;
+    text-align: right;
+     border-radius: 20px;
+     margin-bottom: 10px;
+     font-family: 'Jura';
+     font-size: 32;
+}
+#calculator{
+margin-top:5%;
+padding-top: 1%;
+padding-bottom: 10px;
+margin-left: 40%;
+margin-right: 40%;
+background-color: #0074D9;
+ border-radius: 25px;
+}
+#key{
+  width: 60px;
+  height: 60px;
+  margin: 3px;
+   border-radius: 10px;
+}
+
+</style>
+<script>
+var memory;
+var sign;
+var firstNum;
+var dis = document.getElementById('screen');
+var bigdis = document.getElementById('bigscreen');
+function toScreen(x){
+
+  if(x==0 && dis.value==0){
+      dis.value=0;
+  }else if(dis.value==0){
+    dis.value = x;
+  }
+  else {
+      dis.value += x;
+  }
+
+}
+
+function clearAll(){
+  dis.value='';
+  firstNum='';
+}
+function previous(){
+  var num = dis.value;
+  var len = num.length-1;
+  dis.value = num.substring(0,len);
+}
+function power(){
+    dis.value=dis.value*dis.value;
+}
+function memoryClear(){
+  memory='';
+}
+function memoryRecall(){
+  dis.value=memory;
+}
+function memoryAdd(){
+  memory = dis.value;
+}
+function sqrt(){
+  dis.value = Math.sqrt(dis.value);
+}
+
+function equal(){
+dis.value=eval(dis.value)
+}
+
+</script>
+</body>
